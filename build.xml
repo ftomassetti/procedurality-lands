@@ -1,8 +1,17 @@
-<project name="procedurality" basedir="." default="compile">
+<project name="procedurality-lands" basedir="." default="compile">
+
+	<property name="version" value="1.0"/>
+
 	<target name="init">
 		<tstamp/>
 		<mkdir dir="build"/>
 		<mkdir dir="docs/api"/>
+	</target>
+
+	<target name="package" depends="compile">
+		<jar destfile="procedurality-lands-${version}.jar"
+                     basedir="build"
+                     includes="**"/>
 	</target>
 
 	<target name="clean">
