@@ -1,0 +1,60 @@
+<project name="procedurality" basedir="." default="compile">
+	<target name="init">
+		<tstamp/>
+		<mkdir dir="build"/>
+		<mkdir dir="docs/api"/>
+	</target>
+
+	<target name="clean">
+		<delete dir="build"/>
+		<delete dir="docs/api"/>
+	</target>
+
+	<target name="javadoc" depends="compile">
+		<javadoc packagenames="com.oddlabs.*"
+				sourcepath="src"
+				defaultexcludes="yes"
+				destdir="docs/api"
+				author="true"
+				version="true"
+				use="true"
+				windowtitle="Procedurality">
+		</javadoc>
+	</target>
+	
+	<target name="compile" depends="init">
+		<javac debug="yes" source="1.4" srcdir="src" destdir="build">
+		</javac>
+	</target>
+
+	<target name="run" depends="compile">
+		<java fork="yes" classpath="build" classname="com.oddlabs.procedurality.Main">
+		</java>
+	</target>
+	
+	<target name="example-terrain" depends="compile">
+		<java fork="yes" classpath="build" classname="com.oddlabs.procedurality.ExampleTerrain">
+		</java>
+	</target>
+	
+	<target name="example-texture" depends="compile">
+		<java fork="yes" classpath="build" classname="com.oddlabs.procedurality.ExampleTexture">
+		</java>
+	</target>
+	
+	<target name="example-grass" depends="compile">
+		<java fork="yes" classpath="build" classname="com.oddlabs.procedurality.ExampleGrass">
+		</java>
+	</target>
+	
+	<target name="example-hydraulic" depends="compile">
+		<java fork="yes" classpath="build" classname="com.oddlabs.procedurality.ExampleHydraulic">
+		</java>
+	</target>
+	
+	<target name="example-analyzer" depends="compile">
+		<java fork="yes" classpath="build" classname="com.oddlabs.procedurality.ExampleAnalyzer">
+		</java>
+	</target>
+	
+</project>
